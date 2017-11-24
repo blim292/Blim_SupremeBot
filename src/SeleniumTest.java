@@ -21,17 +21,16 @@ public class SeleniumTest {
 
 		String supremeSite = "http://www.supremenewyork.com";
 
-		
 		String projectLocation = System.getProperty("user.dir");
 		System.setProperty("webdriver.chrome.driver", projectLocation + "/lib/chromedriver/chromedriver");
 		
 		WebDriver driver = new ChromeDriver();
+		WebDriverWait wait1 = new WebDriverWait(driver,120);
 		
 		driver.get(supremeSite + userObj.category);
-		
 //		Page refresher.
 		do{
-			int randomNum = ThreadLocalRandom.current().nextInt(800, 1200 + 1); // between .8 - 1.2 second refresh rate.
+			int randomNum = ThreadLocalRandom.current().nextInt(800, 1000 + 1); // between .8 - 1 second refresh rate.
 			try {
 				Thread.sleep(randomNum);
 			} catch (InterruptedException e) {
@@ -47,48 +46,49 @@ public class SeleniumTest {
 			
 //			Check to make sure the product name and color point to the same link.
 //			If both point to same link, go to link.
-//			List<WebElement> itemHref = driver.findElements(By.partialLinkText(userObj.itemName));
-//			List<WebElement> colorHref = driver.findElements(By.partialLinkText(userObj.itemColor));
-//			
-//			for(WebElement weItem : itemHref) {
-//				for (WebElement weColor : colorHref) {
-//					if (weItem.getAttribute("href").equals(weColor.getAttribute("href"))) {
-//						driver.get(weItem.getAttribute("href"));
-//						break;
-//					}
-//				}
-//			}
-			driver.findElement(By.partialLinkText(userObj.itemName)).click();
+			List<WebElement> itemHref = driver.findElements(By.partialLinkText(userObj.itemName));
+			List<WebElement> colorHref = driver.findElements(By.partialLinkText(userObj.itemColor));
+			
+			for(WebElement weItem : itemHref) {
+				for (WebElement weColor : colorHref) {
+					if (weItem.getAttribute("href").equals(weColor.getAttribute("href"))) {
+						weColor.click();
+						break;
+					}
+				}
+			}
+			
+//			If color doesn't matter.
+//			driver.findElement(By.partialLinkText(userObj.itemColor)).click();
 			
 //			Change Size
-			WebDriverWait wait1 = new WebDriverWait(driver,120);
-//			wait1.until(ExpectedConditions.elementToBeClickable(By.name("s")));
-//			
-//			Select droplist = new Select(driver.findElement(By.name("s")));   
-//			
-//			String cartSize;
-//			switch (userObj.itemSize) {
-//			case "XS":
-//				cartSize = "XSmall";
-//				break;
-//			case "S":
-//				cartSize = "Small";
-//				break;
-//			case "M":
-//				cartSize = "Medium";
-//				break;
-//			case "L":
-//				cartSize = "Large";
-//				break;
-//			case "XL":
-//				cartSize = "XLarge";
-//				break;
-//			default:
-//				cartSize = "Small";
-//				break;
-//			}
-//			
-//			droplist.selectByVisibleText(cartSize);
+			String cartSize;
+			switch (userObj.itemSize) {
+			case "XS":
+				cartSize = "XSmall";
+				break;
+			case "S":
+				cartSize = "Small";
+				break;
+			case "M":
+				cartSize = "Medium";
+				break;
+			case "L":
+				cartSize = "Large";
+				break;
+			case "XL":
+				cartSize = "XLarge";
+				break;
+			default:
+				cartSize = "Small";
+				break;
+			}
+			
+			wait1.until(ExpectedConditions.elementToBeClickable(By.name("s")));
+			Select droplist = new Select(driver.findElement(By.name("s"))); 
+			droplist.selectByVisibleText(cartSize);
+			
+			
 			
 //			Cart item.
 			wait1.until(ExpectedConditions.elementToBeClickable(By.name("commit")));
@@ -115,6 +115,7 @@ public class SeleniumTest {
 			Actions actions = new Actions(driver);
 			actions.moveToElement(element).click().perform();
 
+//			Confirm purchase.
 //			driver.findElement(By.name("commit")).click();
 			
 			
@@ -125,5 +126,5 @@ public class SeleniumTest {
 		
 //		driver.quit();
 	}
-
 }
+

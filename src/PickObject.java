@@ -11,52 +11,52 @@ public class PickObject {
 	void pickItem() {
 		Scanner kb = new Scanner(System.in);
 		
-//		System.out.println("Please provide your billing/shipping info below.");
-//		System.out.print("Name: ");
-//		name = kb.nextLine();
-//		System.out.print("Email: ");
-//		email = kb.nextLine();
-//		System.out.print("Telephone Number: ");
-//		tele = kb.nextLine();
-//		System.out.print("Address: ");
-//		address = kb.nextLine();
-//		
-//		String tempConfirm;
-//		do {
-//			System.out.println("Do you have an apartment unit? (Y/N): ");
-//			tempConfirm = kb.nextLine();
-//		}
-//		while (!tempConfirm.equals("Y") && !tempConfirm.equals("N"));
-//		
-//		if (tempConfirm.equals("Y")) {
-//			System.out.print("Apt:");
-//			apt = kb.nextLine();
-//		}
-//		
-//		System.out.print("ZIP: ");
-//		zip = kb.nextLine();
-//		System.out.print("City: ");
-//		city = kb.nextLine();
-//
-//		System.out.print("State: ");
-//		state = kb.nextLine();
-//		do {
-//			System.out.print("Country (USA or Canada): ");
-//			tempConfirm = kb.nextLine();
-//			tempConfirm = tempConfirm.toUpperCase();
-//		}
-//		while (!tempConfirm.equals("USA") && !tempConfirm.equals("CANADA"));
-//		country = tempConfirm;
-//		
-//		System.out.println("Please enter your cc info below.");
-//		System.out.print("Number: ");
-//		ccNum = kb.nextLine();
-//		System.out.print("CCV: ");
-//		ccv = kb.nextLine();
-//		System.out.print("CC Month: ");
-//		ccMonth = kb.nextLine();
-//		System.out.print("CC Year: ");
-//		ccYear = kb.nextLine();
+		System.out.println("Please provide your billing/shipping info below.");
+		System.out.print("Name: ");
+		name = kb.nextLine();
+		System.out.print("Email: ");
+		email = kb.nextLine();
+		System.out.print("Telephone Number: ");
+		tele = kb.nextLine();
+		System.out.print("Address: ");
+		address = kb.nextLine();
+		
+		String tempConfirm;
+		do {
+			System.out.println("Do you have an apartment unit? (Y/N): ");
+			tempConfirm = kb.nextLine();
+		}
+		while (!tempConfirm.equals("Y") && !tempConfirm.equals("N"));
+		
+		if (tempConfirm.equals("Y")) {
+			System.out.print("Apt:");
+			apt = kb.nextLine();
+		}
+		
+		System.out.print("ZIP: ");
+		zip = kb.nextLine();
+		System.out.print("City: ");
+		city = kb.nextLine();
+
+		System.out.print("State: ");
+		state = kb.nextLine();
+		do {
+			System.out.print("Country (USA or Canada): ");
+			tempConfirm = kb.nextLine();
+			tempConfirm = tempConfirm.toUpperCase();
+		}
+		while (!tempConfirm.equals("USA") && !tempConfirm.equals("CANADA"));
+		country = tempConfirm;
+		
+		System.out.println("Please enter your cc info below.");
+		System.out.print("Number: ");
+		ccNum = kb.nextLine();
+		System.out.print("CCV: ");
+		ccv = kb.nextLine();
+		System.out.print("CC Month: ");
+		ccMonth = kb.nextLine();
+		System.out.print("CC Year: ");
+		ccYear = kb.nextLine();
 		
 		
 		int userChoice;
